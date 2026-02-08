@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Frame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="mechanical.html" class="menu-btn" style="background:#444;">← Back to Mechanical System</a>
+
+    <h2>Drone Frames</h2>
+
+    <div class="result" style="display:block;">
+
+        <img src="images/frame_types.jpg"
+             alt="Drone Frame Types"
+             style="width:100%; border-radius:10px; margin-bottom:20px;">
+
+        <!-- INTRO -->
+        <h3>What is a Drone Frame?</h3>
+        <p>
+            A drone frame is the structural backbone of a UAV. It holds motors, propellers,
+            electronics, payload, and landing gear while maintaining correct geometry for
+            stable flight.
+        </p>
+
+        <p>
+            Frame selection directly affects:
+        </p>
+        <ul>
+            <li>Stability</li>
+            <li>Payload capacity</li>
+            <li>Redundancy</li>
+            <li>Flight efficiency</li>
+            <li>Camera field of view</li>
+        </ul>
+
+        <!-- CLASSIFICATION -->
+        <h3>How Drone Frames Are Classified</h3>
+        <p>
+            Drone frames are classified based on:
+        </p>
+        <ul>
+            <li><b>Number of rotors</b></li>
+            <li><b>Geometric layout of arms</b></li>
+        </ul>
+
+        <hr>
+
+        <!-- QUAD FRAMES -->
+        <h3>Quadcopter Frames (4 Rotors)</h3>
+
+        <h4>Quad + Configuration</h4>
+        <ul>
+            <li>Motors aligned with front, back, left, right</li>
+            <li>Simpler control logic</li>
+            <li>Rarely used today</li>
+        </ul>
+
+        <h4>Quad X Configuration (Most Common)</h4>
+        <ul>
+            <li>Motors placed at 45° angles</li>
+            <li>Balanced thrust distribution</li>
+            <li>Used in racing, camera, and hobby drones</li>
+        </ul>
+
+        <h4>Quad H Configuration</h4>
+        <ul>
+            <li>Wider body section</li>
+            <li>More space for batteries and payload</li>
+            <li>Common in mapping and surveying drones</li>
+        </ul>
+
+        <h4>Quad Y / V Configuration</h4>
+        <ul>
+            <li>Asymmetric layouts</li>
+            <li>Used in experimental or niche designs</li>
+        </ul>
+
+        <p><b>Key Limitation of Quads:</b> No motor redundancy</p>
+
+        <hr>
+
+        <!-- HEXA FRAMES -->
+        <h3>Hexacopter Frames (6 Rotors)</h3>
+
+        <h4>Hexa + Configuration</h4>
+        <ul>
+            <li>Symmetrical design</li>
+            <li>Improved yaw authority</li>
+        </ul>
+
+        <h4>Hexa X Configuration (Most Common)</h4>
+        <ul>
+            <li>Better efficiency than Quad</li>
+            <li>Can tolerate single motor failure (limited)</li>
+            <li>Used in professional UAVs</li>
+        </ul>
+
+        <h4>Hexa Y6 (Coaxial)</h4>
+        <ul>
+            <li>6 motors on 3 arms (top + bottom)</li>
+            <li>Compact size</li>
+            <li>Lower efficiency than flat hexa</li>
+        </ul>
+
+        <p><b>Key Advantage:</b> Redundancy + higher payload</p>
+
+        <hr>
+
+        <!-- OCTA FRAMES -->
+        <h3>Octocopter Frames (8 Rotors)</h3>
+
+        <h4>Octa + / Octa X</h4>
+        <ul>
+            <li>Very high payload capacity</li>
+            <li>Strong redundancy</li>
+            <li>Used in cinema and industrial drones</li>
+        </ul>
+
+        <h4>Octa X8 (Coaxial)</h4>
+        <ul>
+            <li>8 motors on 4 arms</li>
+            <li>Compact heavy-lift design</li>
+            <li>Reduced efficiency compared to flat octa</li>
+        </ul>
+
+        <p><b>Key Trade-off:</b> Weight, cost, and power consumption</p>
+
+        <hr>
+
+        <!-- MATERIAL -->
+        <h3>Frame Materials</h3>
+        <ul>
+            <li><b>Carbon Fiber:</b> Lightweight, strong, expensive</li>
+            <li><b>Plastic:</b> Cheap, flexible, used in beginner drones</li>
+            <li><b>Aluminum:</b> Strong but heavy</li>
+        </ul>
+
+        <hr>
+
+        <!-- SELECTION -->
+        <h3>How to Choose the Right Frame</h3>
+        <ul>
+            <li>Choose rotor count based on payload and redundancy</li>
+            <li>Select geometry based on camera and space requirements</li>
+            <li>Ensure frame supports propeller size</li>
+            <li>Balance strength vs weight</li>
+        </ul>
+
+        <h3>Common Mistakes</h3>
+        <ul>
+            <li>Choosing quad frame for heavy payloads</li>
+            <li>Ignoring propeller clearance</li>
+            <li>Overloading small frames</li>
+            <li>Poor vibration isolation</li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

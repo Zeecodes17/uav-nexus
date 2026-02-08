@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optical Flow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="navigation.html" class="menu-btn" style="background:#444;">← Back to Navigation</a>
+
+    <h2>Optical Flow Sensor</h2>
+
+    <div class="result" style="display:block;">
+
+        <img src="images/opticalflow.jpg"
+             alt="Optical Flow Sensor"
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+        <h3>What is Optical Flow?</h3>
+        <p>
+            An optical flow sensor uses a downward-facing camera to estimate the drone’s
+            movement relative to the ground. It allows the drone to hold position without GPS.
+        </p>
+
+        <h3>How Optical Flow Works</h3>
+        <p>
+            The sensor captures images of the ground and tracks how features move
+            between frames. By measuring this movement, the flight controller can
+            calculate the drone’s velocity and position relative to the surface.
+        </p>
+
+        <h3>Key Parameters</h3>
+        <ul>
+            <li><b>Operating height:</b> Usually effective up to 3–5 meters</li>
+            <li><b>Lighting conditions:</b> Needs visible ground features</li>
+            <li><b>Surface texture:</b> Works best on textured surfaces</li>
+        </ul>
+
+        <h3>Typical Use Cases</h3>
+        <ul>
+            <li>Indoor drone flight</li>
+            <li>GPS-denied environments</li>
+            <li>Precision hovering</li>
+            <li>Warehouse inspection drones</li>
+        </ul>
+
+        <h3>Selection Tips</h3>
+        <ul>
+            <li>Choose sensors with integrated distance sensors for better accuracy</li>
+            <li>Ensure good lighting for proper operation</li>
+            <li>Mount the sensor facing straight downward</li>
+        </ul>
+
+        <h3>Common Mistakes</h3>
+        <ul>
+            <li>Flying over reflective or uniform surfaces</li>
+            <li>Using optical flow at high altitude</li>
+            <li>Operating in poor lighting conditions</li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

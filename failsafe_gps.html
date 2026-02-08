@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Failure – Fail-Safe Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="failsafe.html" class="menu-btn" style="background:#444;">
+        ← Back to Fail-Safe Guide
+    </a>
+
+    <h2>GPS Failure</h2>
+    <p class="subtitle">
+        Immediate actions and decision guidance when position information is lost
+        or becomes unreliable. Designed for fast reference under stress.
+    </p>
+
+    <hr>
+
+    <!-- ================= RECOGNITION ================= -->
+
+    <h3>1. Recognize the Situation</h3>
+
+    <div class="notice">
+        You are likely experiencing a <b>GPS Failure</b> if:
+        <ul>
+            <li>Position or map freezes while attitude remains responsive</li>
+            <li>Unexpected drift during hover or loiter</li>
+            <li>Navigation warnings appear without RC signal loss</li>
+            <li>RTH or position hold disengages unexpectedly</li>
+        </ul>
+    </div>
+
+    <p class="small-text">
+        GPS failure affects <b>position</b>, not basic stabilization.
+    </p>
+
+    <hr>
+
+    <!-- ================= IMMEDIATE ACTIONS ================= -->
+
+    <h3>2. Immediate Actions (First Seconds)</h3>
+
+    <div class="alert critical">
+        <b>Switch to manual attitude control if available.</b>
+    </div>
+
+    <ul>
+        <li>Stabilize roll and pitch first</li>
+        <li>Control altitude gently</li>
+        <li>Expect wind drift — compensate manually</li>
+    </ul>
+
+    <p class="small-text">
+        Position-hold modes cannot function reliably without GPS.
+    </p>
+
+    <hr>
+
+    <!-- ================= WHAT STOPS WORKING ================= -->
+
+    <h3>3. What You Can No Longer Rely On</h3>
+
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Return to Home (RTH)</td>
+                <td>Unreliable or unavailable</td>
+            </tr>
+            <tr>
+                <td>Position Hold / Loiter</td>
+                <td>Not functional</td>
+            </tr>
+            <tr>
+                <td>Waypoint Navigation</td>
+                <td>Disabled</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="small-text">
+        Do not attempt navigation modes that require GPS.
+    </p>
+
+    <hr>
+
+    <!-- ================= DECISION ================= -->
+
+    <h3>4. Decide: Continue or Land</h3>
+
+    <div class="alert caution">
+        <b>Visual conditions determine the safest action.</b>
+    </div>
+
+    <ul>
+        <li>If visual orientation is good → continue manually with caution</li>
+        <li>If orientation is poor → prepare for controlled landing</li>
+        <li>Avoid drifting downwind while deciding</li>
+    </ul>
+
+    <p class="small-text">
+        Loss of situational awareness is more dangerous than loss of GPS.
+    </p>
+
+    <hr>
+
+    <!-- ================= BATTERY IMPLICATIONS ================= -->
+
+    <h3>5. Battery & Drift Implications</h3>
+
+    <div class="alert caution">
+        Manual flight often increases power consumption.
+    </div>
+
+    <ul>
+        <li>Expect reduced flight time</li>
+        <li>Drift correction increases current draw</li>
+        <li>Hover efficiency decreases without position hold</li>
+    </ul>
+
+    <p class="small-text">
+        Treat battery margin as tighter than planned.
+    </p>
+
+    <hr>
+
+    <!-- ================= RECOVERY ================= -->
+
+    <h3>6. If GPS Signal Recovers</h3>
+
+    <div class="alert safe">
+        Reintroduce navigation assistance gradually.
+    </div>
+
+    <ul>
+        <li>Stabilize manually first</li>
+        <li>Verify position accuracy before trusting navigation</li>
+        <li>Avoid immediate RTH at long distances</li>
+    </ul>
+
+    <p class="small-text">
+        False GPS recovery can occur briefly — confirm stability.
+    </p>
+
+    <hr>
+
+    <!-- ================= AFTER LANDING ================= -->
+
+    <h3>7. After Landing</h3>
+
+    <div class="alert safe">
+        Investigate the cause before next flight.
+    </div>
+
+    <ul>
+        <li>Check antenna placement and connections</li>
+        <li>Review environmental interference sources</li>
+        <li>Allow adequate GPS lock before arming</li>
+    </ul>
+
+    <p class="small-text">
+    GPS loss removes automated navigation.
+    Battery tools remain useful for
+    <a href="battery_flight_time.html">manual endurance planning</a>
+    during pre-flight preparation.
+</p>
+
+    <hr>
+
+    <!-- ================= FINAL NOTE ================= -->
+
+    <p class="subtitle">
+        GPS failure removes navigation, not control.
+        Calm manual flight and early decisions prevent escalation.
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

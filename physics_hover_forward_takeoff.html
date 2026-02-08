@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hover vs Forward Flight vs Takeoff</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<a href="physics.html" class="menu-btn" style="background:#444;">
+← Back to Flight Physics Tools
+</a>
+
+<h2>Hover vs Forward Flight vs Takeoff</h2>
+
+<!-- ================= INPUTS ================= -->
+
+<label>Vehicle Weight (kg)</label>
+<input type="range" id="weight" min="0.5" max="25" step="0.1" value="2.0">
+<div class="small-text" id="weightVal">2.0 kg</div>
+
+<label>Number of Motors</label>
+<input type="range" id="motors" min="3" max="12" step="1" value="4">
+<div class="small-text" id="motorVal">4 motors</div>
+
+<label>Flight Aggressiveness</label>
+<select id="style">
+<option value="1.3">Gentle / Efficient</option>
+<option value="1.45" selected>Normal Cruise</option>
+<option value="1.6">Aggressive Maneuvers</option>
+</select>
+
+<label>Takeoff Style</label>
+<select id="takeoff">
+<option value="1.8">Smooth</option>
+<option value="2.0" selected>Normal</option>
+<option value="2.2">Rapid / Heavy Lift</option>
+</select>
+
+<hr>
+
+<!-- ================= RESULTS ================= -->
+
+<h3>Per-Motor Thrust Comparison</h3>
+
+<div class="result-box">
+<p><b>Hover:</b> <span id="hoverOut">–</span> kg</p>
+<p><b>Forward Flight:</b> <span id="forwardOut">–</span> kg</p>
+<p><b>Takeoff:</b> <span id="takeoffOut">–</span> kg</p>
+</div>
+
+<!-- ================= BAR GRAPH ================= -->
+
+<div class="bar-graph">
+
+<div class="bar-container">
+<div class="bar capability" id="hoverBar"></div>
+<span class="bar-value" id="hoverBarVal">– kg</span>
+<span class="bar-label">Hover</span>
+</div>
+
+<div class="bar-container">
+<div class="bar load" id="forwardBar"></div>
+<span class="bar-value" id="forwardBarVal">– kg</span>
+<span class="bar-label">Forward Flight</span>
+</div>
+
+<div class="bar-container">
+<div class="bar peak" id="takeoffBar"></div>
+<span class="bar-value" id="takeoffBarVal">– kg</span>
+<span class="bar-label">Takeoff</span>
+</div>
+
+</div>
+
+</div>
+
+<script>
+const w = document.getElementById("weight");
+const m = document.getElementById("motors");
+const style = document.getElementById("style");
+const takeoff = document.getElementById("takeoff");
+
+const wVal = document.getElementById("weightVal");
+const mVal = document.getElementById("motorVal");
+
+const hoverOut = document.getElementById("hoverOut");
+const forwardOut = document.getElementById("forwardOut");
+const takeoffOut = document.getElementById("takeoffOut");
+
+const hoverBar = document.getElementById("hoverBar");
+const forwardBar = document.getElementById("forwardBar");
+const takeoffBar = document.getElementById("takeoffBar");
+
+const hoverBarVal = document.getElementById("hoverBarVal");
+const forwardBarVal = document.getElementById("forwardBarVal");
+const takeoffBarVal = document.getElementById("takeoffBarVal");
+
+const MAX_REF = 3; // kg per motor (visual reference only)
+
+function update(){
+
+const weight = +w.value;
+const motors = +m.value;
+
+wVal.textContent = weight.toFixed(1)+" kg";
+mVal.textContent = motors+" motors";
+
+const hover = weight / motors;
+const forward = hover * +style.value;
+const take = hover * +takeoff.value;
+
+hoverOut.textContent = hover.toFixed(2);
+forwardOut.textContent = forward.toFixed(2);
+takeoffOut.textContent = take.toFixed(2);
+
+hoverBar.style.height = Math.min(hover / MAX_REF * 100, 100)+"%";
+forwardBar.style.height = Math.min(forward / MAX_REF * 100, 100)+"%";
+takeoffBar.style.height = Math.min(take / MAX_REF * 100, 100)+"%";
+
+hoverBarVal.textContent = hover.toFixed(2)+" kg";
+forwardBarVal.textContent = forward.toFixed(2)+" kg";
+takeoffBarVal.textContent = take.toFixed(2)+" kg";
+}
+
+[w,m,style,takeoff].forEach(e=>e.addEventListener("input",update));
+update();
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

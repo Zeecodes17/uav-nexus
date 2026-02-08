@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Operating Envelope</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="battery.html" class="menu-btn" style="background:#444;">
+        ← Back to Battery & Flight Tools
+    </a>
+
+    <h2>Battery Operating Envelope</h2>
+    <p class="subtitle">
+        Design-time visualization of battery current capability versus mission demand.
+        This tool illustrates margins, not real-time behavior.
+    </p>
+
+    <hr>
+
+    <!-- ================= INPUT SLIDERS ================= -->
+
+    <label>Battery Capacity (mAh)</label>
+    <input type="range" id="capacity"
+           min="1000" max="25000" step="200" value="5000">
+    <div class="small-text" id="capVal">5000 mAh</div>
+
+    <label>C Rating</label>
+    <input type="range" id="cRating"
+           min="5" max="50" step="1" value="20">
+    <div class="small-text" id="cVal">20 C</div>
+
+    <label>Throttle / Mission Demand (%)</label>
+    <input type="range" id="demand"
+           min="20" max="100" step="5" value="60">
+    <div class="small-text" id="demandVal">60 %</div>
+
+    <hr>
+
+    <!-- ================= BAR GRAPH ================= -->
+
+    <h3>Current Margin Visualization</h3>
+
+    <div class="bar-graph">
+
+        <!-- Capability -->
+        <div class="bar-container">
+            <div class="bar capability" id="capBar"></div>
+            <span class="bar-value" id="capValNum">– A</span>
+            <span class="bar-label">Capability</span>
+        </div>
+
+        <!-- Avg Load -->
+        <div class="bar-container">
+            <div class="bar load" id="loadBar"></div>
+            <span class="bar-value" id="loadValNum">– A</span>
+            <span class="bar-label">Avg Load</span>
+        </div>
+
+        <!-- Peak Load -->
+        <div class="bar-container">
+            <div class="bar peak" id="peakBar"></div>
+            <span class="bar-value" id="peakValNum">– A</span>
+            <span class="bar-label">Peak Load</span>
+        </div>
+
+    </div>
+
+    <div class="legend">
+    <span class="legend-item">
+        <span class="legend-color capability"></span>
+        Battery Capability
+    </span>
+    <span class="legend-item">
+        <span class="legend-color load"></span>
+        Average Demand
+    </span>
+    <span class="legend-item">
+        <span class="legend-color peak"></span>
+        Peak Demand
+    </span>
+</div>
+
+
+</div>
+
+<!-- ================= TOOL LOGIC ================= -->
+<script>
+const capacitySlider = document.getElementById("capacity");
+const cSlider = document.getElementById("cRating");
+const demandSlider = document.getElementById("demand");
+
+const capVal = document.getElementById("capVal");
+const cVal = document.getElementById("cVal");
+const demandVal = document.getElementById("demandVal");
+
+const capBar = document.getElementById("capBar");
+const loadBar = document.getElementById("loadBar");
+const peakBar = document.getElementById("peakBar");
+
+const capValNum = document.getElementById("capValNum");
+const loadValNum = document.getElementById("loadValNum");
+const peakValNum = document.getElementById("peakValNum");
+
+// Visual reference scale (not a hard limit)
+const MAX_GRAPH_CURRENT = 300;
+
+// Peak load multiplier (conservative burst assumption)
+const PEAK_FACTOR = 1.3;
+
+function updateBars() {
+    const capacity = Number(capacitySlider.value);
+    const cRating = Number(cSlider.value);
+    const demandPercent = Number(demandSlider.value);
+
+    capVal.textContent = capacity + " mAh";
+    cVal.textContent = cRating + " C";
+    demandVal.textContent = demandPercent + " %";
+
+    // Battery capability
+    const maxCurrent = (capacity / 1000) * cRating;
+
+    // Demand model (design-time sensitivity)
+    const avgLoad = (demandPercent / 100) * maxCurrent;
+    const peakLoad = avgLoad * PEAK_FACTOR;
+
+    // Update bar heights
+    capBar.style.height =
+        Math.min((maxCurrent / MAX_GRAPH_CURRENT) * 100, 100) + "%";
+    loadBar.style.height =
+        Math.min((avgLoad / MAX_GRAPH_CURRENT) * 100, 100) + "%";
+    peakBar.style.height =
+        Math.min((peakLoad / MAX_GRAPH_CURRENT) * 100, 100) + "%";
+
+    // Update numeric values
+    capValNum.textContent = maxCurrent.toFixed(1) + " A";
+    loadValNum.textContent = avgLoad.toFixed(1) + " A";
+    peakValNum.textContent = peakLoad.toFixed(1) + " A";
+}
+
+// Hook sliders
+capacitySlider.addEventListener("input", updateBars);
+cSlider.addEventListener("input", updateBars);
+demandSlider.addEventListener("input", updateBars);
+
+// Initial render
+updateBars();
+</script>
+
+<!-- ================= GLOBAL APP SCRIPT ================= -->
+<script src="script.js"></script>
+
+</body>
+</html>

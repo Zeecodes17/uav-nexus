@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Design Expert</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="index.html" class="menu-btn" style="background:#444;">
+        ← Back to Home
+    </a>
+
+    <h2>Drone Design Expert System</h2>
+
+    <!-- Step Indicator -->
+    <div class="step-title" id="stepTitle">
+        Step 1: Mission Definition & Compliance
+    </div>
+
+    <!-- ================= STEP 1 ================= -->
+    <div class="step" id="step1">
+
+        <label>DGCA Weight Category</label>
+        <select id="weight">
+            <option>Nano (≤ 250 g)</option>
+            <option>Micro (>250 g to ≤2 kg)</option>
+            <option>Small (>2 kg to ≤25 kg)</option>
+            <option>Medium (>25 kg to ≤150 kg)</option>
+            <option>Large (>150 kg)</option>
+        </select>
+
+        <label>Mission Type</label>
+        <select id="mission">
+            <option>Mapping</option>
+            <option>Surveillance</option>
+            <option>Delivery</option>
+            <option>Inspection</option>
+            <option>Search & Rescue</option>
+            <option>Racing</option>
+        </select>
+
+        <label>Control Mode</label>
+        <select id="control">
+            <option>Remote Controlled</option>
+            <option>Autonomous</option>
+            <option>Hybrid (Manual + Autonomous)</option>
+        </select>
+
+    </div>
+
+    <!-- ================= STEP 2 ================= -->
+    <div class="step" id="step2" style="display:none;">
+
+        <label>Operating Environment</label>
+        <select id="environment">
+            <option>Outdoor</option>
+            <option>Indoor</option>
+            <option>Mixed</option>
+        </select>
+
+        <label>GPS Available?</label>
+        <select id="gps">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <label>Area Size (m²)</label>
+        <input type="number" id="area" placeholder="e.g., 500">
+
+        <label>Obstacle Density</label>
+        <select id="obstacles">
+            <option>Few</option>
+            <option>Moderate</option>
+            <option>Many</option>
+        </select>
+
+    </div>
+
+    <!-- ================= STEP 3 ================= -->
+    <div class="step" id="step3" style="display:none;">
+
+        <label>Payload Type</label>
+        <select id="payload">
+            <option>None</option>
+            <option>Camera</option>
+            <option>LiDAR</option>
+            <option>Delivery Package</option>
+            <option>Custom Payload</option>
+        </select>
+
+        <label>Preferred Rotorcraft (Optional)</label>
+        <select id="preference">
+            <option>No Preference</option>
+            <option>Tricopter</option>
+            <option>Quadcopter</option>
+            <option>Hexacopter</option>
+            <option>Octocopter</option>
+            <option>X8 Coaxial</option>
+        </select>
+
+    </div>
+
+    <!-- ================= STEP 4 ================= -->
+    <div class="step" id="step4" style="display:none;">
+
+        <label>Flight Time Requirement</label>
+        <select id="flightTime">
+            <option>Less than 10 minutes</option>
+            <option>10–20 minutes</option>
+            <option>20–40 minutes</option>
+            <option>More than 40 minutes</option>
+        </select>
+
+        <label>Budget (₹)</label>
+        <input type="number" id="budget" placeholder="e.g., 15000">
+
+    </div>
+
+    <!-- ================= STEP 5 ================= -->
+    <div class="step" id="step5" style="display:none;">
+
+        <div class="result-box" id="resultBox">
+            <h3>Design Recommendation</h3>
+            <p>Complete the steps to generate a design recommendation.</p>
+        </div>
+
+    </div>
+
+    <!-- ================= NAVIGATION ================= -->
+    <div class="nav-buttons">
+        <button id="prevBtn" class="secondary">Back</button>
+        <button id="nextBtn">Next</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

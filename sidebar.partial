@@ -1,0 +1,35 @@
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <span class="app-name">UAV Nexus</span>
+        <button class="close-btn" onclick="toggleSidebar()">✕</button>
+    </div>
+
+    <nav class="sidebar-menu">
+        <a href="index.html">🏠 Home</a>
+        <a href="design.html">🧠 Drone Design</a>
+        <a href="learn.html">📘 Learn Components</a>
+        <a href="wiring.html">🔌 Wiring Guide</a>
+        <a href="failsafe.html">🚨 Fail-Safe & Emergency</a>
+        <a href="battery.html">🔋 Battery & Flight Tools</a>
+        <a href="physics.html">🧪 Flight Physics Tools</a>
+
+        <!-- Meta -->
+        <a href="about.html">ℹ️ About</a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="theme-toggle">
+            <span>🌗 Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+</div>

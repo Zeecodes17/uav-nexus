@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrust Requirement Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="physics.html" class="menu-btn" style="background:#444;">
+        ← Back to Flight Physics Tools
+    </a>
+
+    <h2>Thrust Requirement Explorer</h2>
+
+    <!-- ================= CORE INPUTS ================= -->
+
+    <label>Total Vehicle Weight (kg)</label>
+    <input type="range" id="weight" min="0.5" max="25" step="0.1" value="2.0">
+    <div class="small-text" id="weightVal">2.0 kg</div>
+
+    <label>Number of Motors</label>
+    <input type="range" id="motors" min="3" max="12" step="1" value="4">
+    <div class="small-text" id="motorVal">4 motors</div>
+
+    <label>Target Thrust-to-Weight Ratio</label>
+    <input type="range" id="twr" min="1.3" max="3.0" step="0.1" value="2.0">
+    <div class="small-text" id="twrVal">2.0 ×</div>
+
+    <hr>
+
+    <!-- ================= ASSUMPTION MODES ================= -->
+
+    <label>Prop / Disk Effectiveness</label>
+    <select id="diskMode">
+        <option value="0.85">Low</option>
+        <option value="1.0" selected>Typical</option>
+        <option value="1.15">High</option>
+    </select>
+
+    <label>Motor / ESC Utilization</label>
+    <select id="utilMode">
+        <option value="0.75">Conservative</option>
+        <option value="0.9" selected>Nominal</option>
+        <option value="1.0">Aggressive</option>
+    </select>
+
+    <button class="secondary" id="toggleAdvanced" style="margin-top:12px;">
+        Advanced assumptions
+    </button>
+
+    <!-- ================= ADVANCED ================= -->
+
+    <div id="advancedBlock" style="display:none;">
+
+        <hr>
+
+        <label>Disk Effectiveness Scalar</label>
+        <input type="range" id="diskScalar" min="0.7" max="1.2" step="0.02" value="1.0">
+        <div class="small-text" id="diskVal">1.00</div>
+
+        <label>Utilization Scalar</label>
+        <input type="range" id="utilScalar" min="0.6" max="1.0" step="0.02" value="0.9">
+        <div class="small-text" id="utilVal">0.90</div>
+
+    </div>
+
+    <hr>
+
+    <!-- ================= RESULTS ================= -->
+
+    <h3>Thrust Breakdown (per motor)</h3>
+
+    <div class="result-box">
+        <p><b>Hover Thrust:</b> <span id="hoverOut">–</span> kg</p>
+        <p><b>Required Thrust:</b> <span id="reqOut">–</span> kg</p>
+        <p><b>Max Usable Thrust:</b> <span id="maxOut">–</span> kg</p>
+        <p><b>Thrust Margin:</b> <span id="marginOut">–</span> %</p>
+        <p><b>Design Verdict:</b> <span id="verdictOut">–</span></p>
+    </div>
+
+    <!-- ================= VISUAL ================= -->
+
+    <div class="bar-graph">
+
+        <div class="bar-container">
+            <div class="bar load" id="hoverBar"></div>
+            <span class="bar-value" id="hoverBarVal">– kg</span>
+            <span class="bar-label">Hover</span>
+        </div>
+
+        <div class="bar-container">
+            <div class="bar peak" id="reqBar"></div>
+            <span class="bar-value" id="reqBarVal">– kg</span>
+            <span class="bar-label">Required</span>
+        </div>
+
+        <div class="bar-container">
+            <div class="bar capability" id="maxBar"></div>
+            <span class="bar-value" id="maxBarVal">– kg</span>
+            <span class="bar-label">Usable Max</span>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const w = document.getElementById("weight");
+const m = document.getElementById("motors");
+const twr = document.getElementById("twr");
+
+const wVal = document.getElementById("weightVal");
+const mVal = document.getElementById("motorVal");
+const twrVal = document.getElementById("twrVal");
+
+const diskMode = document.getElementById("diskMode");
+const utilMode = document.getElementById("utilMode");
+
+const diskScalar = document.getElementById("diskScalar");
+const utilScalar = document.getElementById("utilScalar");
+
+const diskVal = document.getElementById("diskVal");
+const utilVal = document.getElementById("utilVal");
+
+const adv = document.getElementById("advancedBlock");
+document.getElementById("toggleAdvanced").onclick = () => {
+    adv.style.display = adv.style.display === "none" ? "block" : "none";
+};
+
+const hoverOut = document.getElementById("hoverOut");
+const reqOut = document.getElementById("reqOut");
+const maxOut = document.getElementById("maxOut");
+const marginOut = document.getElementById("marginOut");
+const verdictOut = document.getElementById("verdictOut");
+
+const hoverBar = document.getElementById("hoverBar");
+const reqBar = document.getElementById("reqBar");
+const maxBar = document.getElementById("maxBar");
+
+const hoverBarVal = document.getElementById("hoverBarVal");
+const reqBarVal = document.getElementById("reqBarVal");
+const maxBarVal = document.getElementById("maxBarVal");
+
+const MAX_REF = 10;
+
+function update() {
+
+    const weight = +w.value;
+    const motors = +m.value;
+    const ratio = +twr.value;
+
+    wVal.textContent = weight.toFixed(1) + " kg";
+    mVal.textContent = motors + " motors";
+    twrVal.textContent = ratio.toFixed(1) + " ×";
+
+    let disk = +diskMode.value;
+    let util = +utilMode.value;
+
+    if (adv.style.display === "block") {
+        disk = +diskScalar.value;
+        util = +utilScalar.value;
+        diskVal.textContent = disk.toFixed(2);
+        utilVal.textContent = util.toFixed(2);
+    }
+
+    const hover = weight / motors;
+    const required = (weight * ratio) / motors;
+    const max = hover * 3 * disk * util;
+    const margin = ((max - required) / required) * 100;
+
+    hoverOut.textContent = hover.toFixed(2);
+    reqOut.textContent = required.toFixed(2);
+    maxOut.textContent = max.toFixed(2);
+    marginOut.textContent = margin.toFixed(0);
+
+    let verdict = "Marginal";
+    if (margin > 40) verdict = "Efficient";
+    else if (margin < 15) verdict = "Stressed";
+
+    verdictOut.textContent = verdict;
+
+    hoverBar.style.height = Math.min((hover / MAX_REF) * 100, 100) + "%";
+    reqBar.style.height = Math.min((required / MAX_REF) * 100, 100) + "%";
+    maxBar.style.height = Math.min((max / MAX_REF) * 100, 100) + "%";
+
+    hoverBarVal.textContent = hover.toFixed(2) + " kg";
+    reqBarVal.textContent = required.toFixed(2) + " kg";
+    maxBarVal.textContent = max.toFixed(2) + " kg";
+}
+
+[w, m, twr, diskMode, utilMode, diskScalar, utilScalar].forEach(el =>
+    el.addEventListener("input", update)
+);
+
+update();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

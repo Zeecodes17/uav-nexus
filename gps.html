@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="navigation.html" class="menu-btn" style="background:#444;">← Back to Navigation</a>
+
+    <h2>GPS Module</h2>
+
+    <div class="result" style="display:block;">
+
+        <img src="images/gps.jpg"
+             alt="GPS Module"
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+        <h3>What is GPS?</h3>
+        <p>
+            GPS (Global Positioning System) provides the drone’s position, altitude, and speed
+            using signals from satellites orbiting the Earth.
+        </p>
+
+        <h3>How GPS Works</h3>
+        <p>
+            The GPS module receives signals from multiple satellites.
+            By measuring the time taken for signals to reach the receiver,
+            it calculates the drone’s position using trilateration.
+        </p>
+
+        <h3>Key Parameters</h3>
+        <ul>
+            <li><b>Satellite count:</b> More satellites = better accuracy</li>
+            <li><b>Update rate:</b> Typically 5–10 Hz</li>
+            <li><b>Accuracy:</b> Usually within 1–3 meters</li>
+            <li><b>Integrated compass:</b> Provides heading information</li>
+        </ul>
+
+        <h3>Typical Use Cases</h3>
+        <ul>
+            <li>Mapping drones</li>
+            <li>Delivery UAVs</li>
+            <li>Autonomous waypoint missions</li>
+            <li>Return-to-home functionality</li>
+        </ul>
+
+        <h3>Selection Tips</h3>
+        <ul>
+            <li>Choose GPS with integrated compass for better navigation</li>
+            <li>Use external GPS for large drones to reduce interference</li>
+            <li>Ensure clear sky view for best performance</li>
+        </ul>
+
+        <h3>Common Mistakes</h3>
+        <ul>
+            <li>Mounting GPS near power wires or ESCs</li>
+            <li>Flying before GPS lock</li>
+            <li>Ignoring compass calibration</li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

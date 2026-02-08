@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor / Propulsion Failure – Fail-Safe Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="failsafe.html" class="menu-btn" style="background:#444;">
+        ← Back to Fail-Safe Guide
+    </a>
+
+    <h2>Motor / Propulsion Failure</h2>
+    <p class="subtitle">
+        Immediate actions and decision guidance when thrust is partially or fully lost.
+        This page is intended for fast reference under stress.
+    </p>
+
+    <hr>
+
+    <!-- ================= RECOGNITION ================= -->
+
+    <h3>1. Recognize the Situation</h3>
+
+    <div class="notice">
+        You are likely experiencing a <b>Motor / Propulsion Failure</b> if:
+        <ul>
+            <li>Sudden yaw, roll, or tilt without stick input</li>
+            <li>Loss of altitude despite increased throttle</li>
+            <li>Unusual vibration or audible motor change</li>
+            <li>Vehicle spins or drifts uncontrollably</li>
+        </ul>
+    </div>
+
+    <p class="small-text">
+        Do not assume sensor or control failure until propulsion loss is ruled out.
+    </p>
+
+    <hr>
+
+    <!-- ================= IMMEDIATE ACTIONS ================= -->
+
+    <h3>2. Immediate Actions (First Seconds)</h3>
+
+    <div class="alert critical">
+        <b>Reduce aggressive inputs immediately.</b>
+    </div>
+
+    <ul>
+        <li>Center yaw and roll inputs</li>
+        <li>Avoid rapid throttle changes</li>
+        <li>Stabilize attitude as much as possible</li>
+    </ul>
+
+    <p class="small-text">
+        Aggressive corrections often worsen asymmetrical thrust conditions.
+    </p>
+
+    <hr>
+
+    <!-- ================= AIRCRAFT RESPONSE ================= -->
+
+    <h3>3. What the Aircraft Can Still Do</h3>
+
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Condition</th>
+                <th>Likely Capability</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Partial motor thrust loss</td>
+                <td>Limited control possible, increased power draw</td>
+            </tr>
+            <tr>
+                <td>Complete motor failure</td>
+                <td>Stable hover not possible</td>
+            </tr>
+            <tr>
+                <td>Fixed-wing / VTOL transition</td>
+                <td>Glide or transition may be possible</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="small-text">
+        Multirotor aircraft cannot maintain stable hover after a full motor failure.
+    </p>
+
+    <hr>
+
+    <!-- ================= DECISION ================= -->
+
+    <h3>4. Make the Decision</h3>
+
+    <div class="alert caution">
+        <b>Prioritize a controlled descent over recovery attempts.</b>
+    </div>
+
+    <ul>
+        <li>Choose a clear, low-risk landing area</li>
+        <li>Avoid flying over people or property</li>
+        <li>Accept altitude loss if control improves</li>
+    </ul>
+
+    <p class="small-text">
+        Attempting to “fight” the aircraft often leads to complete loss of control.
+    </p>
+
+    <hr>
+
+    <!-- ================= BATTERY IMPLICATIONS ================= -->
+
+    <h3>5. Battery & Power Implications</h3>
+
+    <div class="alert caution">
+        Remaining motors may draw excessive current.
+    </div>
+
+    <ul>
+        <li>Expect rapid battery depletion</li>
+        <li>Voltage sag may trigger additional failsafes</li>
+        <li>Extended flight is not sustainable</li>
+    </ul>
+
+    <p class="small-text">
+        If descent is controllable, land immediately.
+    </p>
+
+    <hr>
+
+    <!-- ================= AFTER LANDING ================= -->
+
+    <h3>6. After Landing</h3>
+
+    <div class="alert safe">
+        Secure the system before inspection.
+    </div>
+
+    <ul>
+        <li>Disarm and disconnect battery</li>
+        <li>Check motor, ESC, and wiring temperature</li>
+        <li>Inspect propellers for damage or detachment</li>
+    </ul>
+
+    <p class="small-text">
+    After recovery, review power margins using
+    <a href="battery_health.html">Battery Operating Envelope</a>
+    to assess stress under asymmetrical thrust.
+</p>
+
+    <hr>
+
+    <!-- ================= FINAL NOTE ================= -->
+
+    <p class="subtitle">
+        Motor failures are time-critical.
+        A controlled descent is always preferable to an uncontrolled recovery attempt.
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

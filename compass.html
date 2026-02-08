@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compass</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="navigation.html" class="menu-btn" style="background:#444;">← Back to Navigation</a>
+
+    <h2>Compass (Magnetometer)</h2>
+
+    <div class="result" style="display:block;">
+
+        <img src="images/compass.jpg"
+             alt="Compass Module"
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+        <h3>What is a Compass?</h3>
+        <p>
+            A compass, also called a magnetometer, measures the drone’s heading
+            relative to the Earth’s magnetic field. It tells the flight controller
+            which direction the drone is facing.
+        </p>
+
+        <h3>How the Compass Works</h3>
+        <p>
+            The compass detects the Earth’s magnetic field and calculates the
+            direction of magnetic north. The flight controller combines compass
+            data with GPS and IMU data to determine the drone’s orientation and
+            heading during flight.
+        </p>
+
+        <h3>Key Parameters</h3>
+        <ul>
+            <li><b>Magnetic sensitivity:</b> Ability to detect small field changes</li>
+            <li><b>Noise resistance:</b> Ability to reject electrical interference</li>
+            <li><b>Calibration:</b> Required before flight for accurate heading</li>
+        </ul>
+
+        <h3>Typical Use Cases</h3>
+        <ul>
+            <li>GPS-based navigation</li>
+            <li>Waypoint missions</li>
+            <li>Return-to-home function</li>
+            <li>Heading stabilization</li>
+        </ul>
+
+        <h3>Selection Tips</h3>
+        <ul>
+            <li>Use an external compass for larger drones</li>
+            <li>Mount the compass away from power wires and ESCs</li>
+            <li>Use GPS modules with built-in compass for easier setup</li>
+        </ul>
+
+        <h3>Common Mistakes</h3>
+        <ul>
+            <li>Mounting the compass near high-current wires</li>
+            <li>Skipping compass calibration</li>
+            <li>Flying with magnetic interference</li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

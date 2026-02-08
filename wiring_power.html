@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Distribution Wiring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="wiring.html" class="menu-btn">
+        ← Back to Wiring Guide
+    </a>
+
+    <h2>Power Distribution</h2>
+    <p class="subtitle">
+        Battery → PDB → ESCs → Flight Controller power wiring
+    </p>
+
+    <hr>
+
+    <h3>Safety First</h3>
+    <ul>
+        <li>Remove all propellers</li>
+        <li>Do NOT connect the battery while wiring</li>
+        <li>Verify battery voltage and polarity</li>
+        <li>Use proper wire gauge for current</li>
+    </ul>
+
+    <hr>
+
+    <h3>Main Power Path</h3>
+    <p>
+        Multirotor power systems follow a simple distribution chain:
+    </p>
+
+    <ul>
+        <li><b>Battery</b> → Power source</li>
+        <li><b>PDB / Power Module</b> → Distributes voltage</li>
+        <li><b>ESCs</b> → Regulate motor power</li>
+        <li><b>Flight Controller</b> → Powered via regulated supply</li>
+    </ul>
+
+    <hr>
+
+    <h3>Battery to PDB</h3>
+    <table>
+        <tr>
+            <th>Battery Wire</th>
+            <th>PDB Connection</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>Red (+)</td>
+            <td>VBAT +</td>
+            <td>Check polarity twice before soldering</td>
+        </tr>
+        <tr>
+            <td>Black (–)</td>
+            <td>GND</td>
+            <td>Ground reference for entire system</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>PDB to ESC Power</h3>
+    <p>
+        Each ESC draws high current directly from the battery via the PDB.
+    </p>
+
+    <table>
+        <tr>
+            <th>ESC Wire</th>
+            <th>PDB Pad</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>Red (+)</td>
+            <td>VBAT +</td>
+            <td>High current line</td>
+        </tr>
+        <tr>
+            <td>Black (–)</td>
+            <td>GND</td>
+            <td>Shared ground</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Powering the Flight Controller</h3>
+    <p>
+        Flight controllers must NEVER be powered directly from battery voltage.
+    </p>
+
+    <ul>
+        <li>Use a power module, BEC, or regulated 5V/6V supply</li>
+        <li>Common sources:
+            <ul>
+                <li>PDB BEC output</li>
+                <li>Dedicated power module</li>
+                <li>Single ESC BEC (small drones only)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h3>Typical FC Power Inputs</h3>
+    <table>
+        <tr>
+            <th>FC Pin</th>
+            <th>Voltage</th>
+            <th>Source</th>
+        </tr>
+        <tr>
+            <td>POWER / PM</td>
+            <td>5–6V</td>
+            <td>Power module</td>
+        </tr>
+        <tr>
+            <td>SERVO RAIL</td>
+            <td>5–8V</td>
+            <td>BEC (check FC manual)</td>
+        </tr>
+        <tr>
+            <td>USB</td>
+            <td>5V</td>
+            <td>Configuration only</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Common Power Mistakes</h3>
+    <ul>
+        <li>Reversing battery polarity</li>
+        <li>Powering FC directly from battery</li>
+        <li>Using thin wires for ESC power</li>
+        <li>Multiple BECs connected together</li>
+    </ul>
+
+    <hr>
+
+    <h3>Pre-Power Checklist</h3>
+    <ul>
+        <li>Continuity check between + and – (no short)</li>
+        <li>Correct wire gauge for battery and ESCs</li>
+        <li>FC powered via USB first</li>
+        <li>No motors or props spinning freely</li>
+    </ul>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

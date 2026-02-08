@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Signal Loss – Fail-Safe Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="failsafe.html" class="menu-btn" style="background:#444;">
+        ← Back to Fail-Safe Guide
+    </a>
+
+    <h2>RC Signal Loss</h2>
+    <p class="subtitle">
+        Immediate actions and decision guidance when control signal is lost.
+        This page is intended for fast reference under stress.
+    </p>
+
+    <hr>
+
+    <!-- ================= RECOGNITION ================= -->
+
+    <h3>1. Recognize the Situation</h3>
+
+    <div class="notice">
+        You are likely experiencing <b>RC Signal Loss</b> if:
+        <ul>
+            <li>Stick inputs produce no response</li>
+            <li>Telemetry freezes or shows signal warning</li>
+            <li>The aircraft continues last commanded motion</li>
+        </ul>
+    </div>
+
+    <p class="small-text">
+        Do not assume GPS, compass, or battery failure at this stage.
+    </p>
+
+    <hr>
+
+    <!-- ================= IMMEDIATE ACTIONS ================= -->
+
+    <h3>2. Immediate Actions (First 5 Seconds)</h3>
+
+    <div class="alert critical">
+        <b>Stop aggressive inputs immediately.</b>
+    </div>
+
+    <ul>
+        <li>Release sticks to neutral</li>
+        <li>Do not toggle flight modes rapidly</li>
+        <li>Allow onboard failsafe logic to engage</li>
+    </ul>
+
+    <p class="small-text">
+        Sudden mode changes during signal loss can worsen instability.
+    </p>
+
+    <hr>
+
+    <!-- ================= AIRCRAFT BEHAVIOR ================= -->
+
+    <h3>3. What the Aircraft May Do</h3>
+
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Failsafe Behavior</th>
+                <th>What It Means</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Return to Home (RTH)</td>
+                <td>Aircraft navigates back using GPS</td>
+            </tr>
+            <tr>
+                <td>Land</td>
+                <td>Aircraft descends vertically at current location</td>
+            </tr>
+            <tr>
+                <td>Hold / Loiter</td>
+                <td>Aircraft maintains position temporarily</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="small-text">
+        You may not know which behavior is active during the event. Assume the most conservative case.
+    </p>
+
+    <hr>
+
+    <!-- ================= BATTERY CHECK ================= -->
+
+    <h3>4. Battery Reality Check</h3>
+
+    <div class="alert caution">
+        If the aircraft is returning automatically, battery margin becomes critical.
+    </div>
+
+    <p>
+        Mentally assess:
+    </p>
+
+    <ul>
+        <li>Approximate distance to home</li>
+        <li>Expected cruise power</li>
+        <li>Remaining reserve margin</li>
+    </ul>
+
+    <p class="small-text">
+        If uncertain, assume margin is tight and prepare for an off-nominal landing.
+    </p>
+
+    <p>
+        Use <b>Return Flight Energy Check</b> when planning or reviewing incidents.
+    </p>
+
+    <hr>
+
+    <!-- ================= SIGNAL RECOVERY ================= -->
+
+    <h3>5. If Signal Returns</h3>
+
+    <div class="alert safe">
+        Regain control calmly.
+    </div>
+
+    <ul>
+        <li>Stabilize attitude first</li>
+        <li>Avoid abrupt yaw or throttle changes</li>
+        <li>Do not immediately switch modes</li>
+    </ul>
+
+    <p class="small-text">
+        Allow sensors and control loops to settle before continuing the mission.
+    </p>
+
+    <hr>
+
+    <!-- ================= NO RECOVERY ================= -->
+
+    <h3>6. If Signal Does Not Return</h3>
+
+    <div class="alert critical">
+        Prepare for recovery after landing.
+    </div>
+
+    <ul>
+        <li>Note last known heading and altitude</li>
+        <li>Observe wind direction</li>
+        <li>Mark last visible or reported position</li>
+    </ul>
+
+    <p class="small-text">
+    When planning autonomous return behavior, verify feasibility using
+    <a href="battery_rth.html">Return Flight Energy Check</a>.
+</p>
+
+    <hr>
+
+    <!-- ================= FINAL NOTE ================= -->
+
+    <p class="subtitle">
+        RC signal loss is survivable when handled calmly.
+        Most losses escalate due to rushed reactions, not the failure itself.
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

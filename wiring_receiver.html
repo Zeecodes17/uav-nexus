@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver to Flight Controller Wiring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="wiring.html" class="menu-btn">
+        ← Back to Wiring Guide
+    </a>
+
+    <h2>Receiver ↔ Flight Controller Wiring</h2>
+    <p class="subtitle">
+        Connecting RC receiver signals, power, and ground to the flight controller
+    </p>
+
+    <hr>
+
+    <h3>Before You Start</h3>
+    <ul>
+        <li>Remove all propellers</li>
+        <li>Do NOT power from battery yet</li>
+        <li>Identify receiver output type (PWM / SBUS / iBUS / CRSF)</li>
+        <li>Check FC receiver input pins</li>
+    </ul>
+
+    <hr>
+
+    <h3>Receiver Output Types</h3>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Wires</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>PWM</td>
+            <td>3 wires per channel</td>
+            <td>One signal wire per channel</td>
+        </tr>
+        <tr>
+            <td>SBUS</td>
+            <td>Single signal wire</td>
+            <td>Serial, inverted (FrSky)</td>
+        </tr>
+        <tr>
+            <td>iBUS</td>
+            <td>Single signal wire</td>
+            <td>Serial, non-inverted (FlySky)</td>
+        </tr>
+        <tr>
+            <td>CRSF</td>
+            <td>TX + RX</td>
+            <td>Bi-directional, UART required</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>PWM Receiver Wiring</h3>
+    <p>
+        PWM receivers use one signal wire per channel.
+    </p>
+
+    <table>
+        <tr>
+            <th>Receiver</th>
+            <th>Flight Controller</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>CH1 Signal</td>
+            <td>RC1 / PWM1</td>
+            <td>Roll</td>
+        </tr>
+        <tr>
+            <td>CH2 Signal</td>
+            <td>RC2 / PWM2</td>
+            <td>Pitch</td>
+        </tr>
+        <tr>
+            <td>CH3 Signal</td>
+            <td>RC3 / PWM3</td>
+            <td>Throttle</td>
+        </tr>
+        <tr>
+            <td>CH4 Signal</td>
+            <td>RC4 / PWM4</td>
+            <td>Yaw</td>
+        </tr>
+        <tr>
+            <td>+5V</td>
+            <td>+5V</td>
+            <td>From BEC or power module</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+            <td>Common ground required</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>SBUS / iBUS Receiver Wiring (Serial)</h3>
+    <p>
+        Serial receivers use a single signal wire for all channels.
+    </p>
+
+    <table>
+        <tr>
+            <th>Receiver</th>
+            <th>Flight Controller</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>SBUS / iBUS Signal</td>
+            <td>RC IN or UART RX</td>
+            <td>Depends on FC design</td>
+        </tr>
+        <tr>
+            <td>+5V</td>
+            <td>+5V</td>
+            <td>From BEC or FC rail</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+            <td>Mandatory</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Signal Inversion (Critical)</h3>
+    <ul>
+        <li>SBUS (FrSky) signals are inverted</li>
+        <li>Use FC SBUS pad or inverted UART input</li>
+        <li>iBUS and CRSF are NOT inverted</li>
+        <li>Incorrect inversion = no receiver input</li>
+    </ul>
+
+    <hr>
+
+    <h3>CRSF / ExpressLRS Wiring</h3>
+    <p>
+        CRSF requires a full UART connection.
+    </p>
+
+    <table>
+        <tr>
+            <th>Receiver</th>
+            <th>Flight Controller</th>
+        </tr>
+        <tr>
+            <td>TX</td>
+            <td>UART RX</td>
+        </tr>
+        <tr>
+            <td>RX</td>
+            <td>UART TX</td>
+        </tr>
+        <tr>
+            <td>+5V</td>
+            <td>+5V</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Common Receiver Wiring Mistakes</h3>
+    <ul>
+        <li>Missing ground connection</li>
+        <li>Using wrong UART for serial receivers</li>
+        <li>Incorrect SBUS inversion</li>
+        <li>Powering receiver from battery voltage</li>
+    </ul>
+
+    <hr>
+
+    <h3>Pre-Power Checklist</h3>
+    <ul>
+        <li>Receiver powered from regulated 5V</li>
+        <li>Signal wire connected to correct pin</li>
+        <li>Common ground confirmed</li>
+        <li>Receiver LED indicates normal state</li>
+    </ul>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

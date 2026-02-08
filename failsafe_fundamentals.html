@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fail-Safe Fundamentals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="failsafe.html" class="menu-btn">
+        ← Back to Fail-Safe Guide
+    </a>
+
+    <h2>Fail-Safe Fundamentals</h2>
+    <p class="subtitle">
+        Understanding how drones detect failures, prioritize safety, and decide emergency actions
+    </p>
+
+    <hr>
+
+    <h3>What Does “Fail-Safe” Mean?</h3>
+    <p>
+        A fail-safe is a predefined system response that is triggered when the drone
+        detects abnormal, unsafe, or missing conditions during flight.
+    </p>
+    <p>
+        The goal of a fail-safe is not mission completion — it is to:
+    </p>
+    <ul>
+        <li>Prevent uncontrolled flight</li>
+        <li>Reduce risk to people and property</li>
+        <li>Protect the drone when possible</li>
+        <li>Bring the system to a predictable state</li>
+    </ul>
+
+    <hr>
+
+    <h3>Failure vs Emergency</h3>
+    <p>
+        Not all failures are immediate emergencies.
+    </p>
+
+    <table>
+        <tr>
+            <th>Condition</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td>Failure</td>
+            <td>A component or signal is degraded, lost, or behaving incorrectly</td>
+        </tr>
+        <tr>
+            <td>Emergency</td>
+            <td>A failure that requires immediate corrective action</td>
+        </tr>
+    </table>
+
+    <p>
+        Example:
+    </p>
+    <ul>
+        <li>GPS accuracy drop → failure</li>
+        <li>Complete GPS loss during autonomous flight → emergency</li>
+    </ul>
+
+    <hr>
+
+    <h3>Fail-Safe Decision Hierarchy</h3>
+    <p>
+        When multiple failures occur, drones follow a priority order to decide what to do next.
+    </p>
+
+    <ol>
+        <li><b>Human Safety</b> – avoid harming people or surroundings</li>
+        <li><b>Flight Stability</b> – prevent uncontrolled motion</li>
+        <li><b>Navigation Recovery</b> – attempt safe return if possible</li>
+        <li><b>Asset Protection</b> – preserve the drone only if safe</li>
+    </ol>
+
+    <p>
+        This hierarchy explains why some fail-safes result in immediate landing
+        instead of attempting mission recovery.
+    </p>
+
+    <hr>
+
+    <h3>Control Authority Levels</h3>
+    <p>
+        Fail-safe behavior depends on who or what currently has control authority.
+    </p>
+
+    <table>
+        <tr>
+            <th>Authority Level</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Pilot</td>
+            <td>Manual RC control inputs dominate</td>
+        </tr>
+        <tr>
+            <td>Autopilot</td>
+            <td>Navigation and stabilization handled automatically</td>
+        </tr>
+        <tr>
+            <td>Fail-Safe Logic</td>
+            <td>Overrides both pilot and mission logic when safety is compromised</td>
+        </tr>
+    </table>
+
+    <p>
+        Once fail-safe logic is active, pilot inputs may be ignored or limited.
+    </p>
+
+    <hr>
+
+    <h3>Sensor Trust and Degradation</h3>
+    <p>
+        Drones do not treat all sensors equally.
+        Each sensor has an expected reliability and failure pattern.
+    </p>
+
+    <ul>
+        <li>IMU → always required for flight</li>
+        <li>Compass → required for heading and navigation</li>
+        <li>GPS → required for global position</li>
+        <li>RC link → required for manual intervention</li>
+    </ul>
+
+    <p>
+        Fail-safes are often triggered not by total loss,
+        but by sensor data becoming unreliable or inconsistent.
+    </p>
+
+    <hr>
+
+    <h3>Time-Critical vs Recoverable Failures</h3>
+
+    <table>
+        <tr>
+            <th>Failure Type</th>
+            <th>System Response</th>
+        </tr>
+        <tr>
+            <td>Time-Critical</td>
+            <td>Immediate landing, motor shutdown, or descent</td>
+        </tr>
+        <tr>
+            <td>Recoverable</td>
+            <td>Mode switch, navigation fallback, or pilot takeover</td>
+        </tr>
+    </table>
+
+    <p>
+        Example:
+    </p>
+    <ul>
+        <li>Motor failure → time-critical</li>
+        <li>Temporary RC signal drop → recoverable</li>
+    </ul>
+
+    <hr>
+
+    <h3>Why Fail-Safes Are Conservative by Design</h3>
+    <p>
+        Fail-safe logic assumes worst-case conditions.
+        This often results in behavior that may seem aggressive or restrictive.
+    </p>
+
+    <ul>
+        <li>Landing early instead of finishing a mission</li>
+        <li>Ignoring pilot commands</li>
+        <li>Preventing arming or takeoff</li>
+    </ul>
+
+    <p>
+        These decisions exist to avoid cascading failures
+        where one fault leads to complete loss of control.
+    </p>
+
+    <hr>
+
+    <h3>What This Guide Will Cover Next</h3>
+    <p>
+        The following pages analyze specific fail-safe scenarios:
+    </p>
+    <ul>
+        <li>Loss of RC signal</li>
+        <li>Battery and power failure</li>
+        <li>GPS and navigation loss</li>
+        <li>Compass and heading errors</li>
+        <li>Motor and ESC failure</li>
+        <li>Pilot emergency decision-making</li>
+    </ul>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

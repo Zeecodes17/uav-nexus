@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESC to Motor Wiring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="wiring.html" class="menu-btn" style="background:#444;">
+        ← Back to Wiring Guide
+    </a>
+
+    <h2>ESC ↔ Motor Wiring</h2>
+
+    <div class="result" style="display:block;">
+
+        <h3>Scope</h3>
+        <p>
+            This page covers the physical wiring between an Electronic Speed Controller (ESC)
+            and a brushless motor, including connection order, direction rules, and verification
+            steps before proceeding further.
+        </p>
+
+        <hr>
+
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>Motors mounted securely on the frame</li>
+            <li>ESCs mounted and powered from PDB or power source</li>
+            <li>Flight controller installed (not armed)</li>
+            <li>Propellers removed</li>
+        </ul>
+
+        <hr>
+
+        <h3>Wiring Steps</h3>
+        <ol>
+            <li>Identify the three output wires from the ESC</li>
+            <li>Identify the three phase wires from the motor</li>
+            <li>Connect the ESC wires to the motor wires in any order</li>
+            <li>Ensure all connectors or solder joints are secure</li>
+            <li>Route wires away from rotating parts and sharp edges</li>
+        </ol>
+
+        <p>
+            At this stage, motor rotation direction does not matter.
+            Direction will be verified and corrected during testing.
+        </p>
+
+        <hr>
+
+        <h3>Motor Direction Rules</h3>
+        <ul>
+            <li>Multirotor drones require alternating motor directions</li>
+            <li>Motor direction is determined by phase order, not wire color</li>
+            <li>Correct direction depends on motor position on the frame</li>
+        </ul>
+
+        <p>
+            To reverse motor direction, swap any two of the three ESC–motor wires.
+            No ESC reprogramming is required.
+        </p>
+
+        <hr>
+
+        <h3>Connection Methods</h3>
+        <ul>
+            <li>
+                <b>Bullet connectors:</b> Easier motor replacement and quick direction changes
+            </li>
+            <li>
+                <b>Direct soldering:</b> Lower resistance, preferred for high-current or permanent builds
+            </li>
+        </ul>
+
+        <hr>
+
+        <h3>Verification Checklist</h3>
+        <ul>
+            <li>All motor mounting screws tightened</li>
+            <li>No exposed copper on motor connections</li>
+            <li>Wires secured and strain-relieved</li>
+            <li>Motor shafts spin freely without obstruction</li>
+        </ul>
+
+        <hr>
+
+        <h3>Common Faults & Fixes</h3>
+        <ul>
+            <li>
+                <b>Motor spins in wrong direction:</b>
+                Swap any two motor wires
+            </li>
+            <li>
+                <b>Motor does not spin:</b>
+                Check ESC power input and signal connection
+            </li>
+            <li>
+                <b>Motor vibrates or stutters:</b>
+                Inspect loose connectors or poor solder joints
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

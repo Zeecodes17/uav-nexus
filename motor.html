@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Motor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="mechanical.html" class="menu-btn" style="background:#444;">← Back to Mechanical System</a>
+
+    <h2>Drone Motor (Brushless Motor)</h2>
+
+    <div class="result" style="display:block;">
+
+        <img src="images/motor.jpg"
+             alt="Drone Brushless Motor"
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+        <h3>What is a Drone Motor?</h3>
+        <p>
+            Drone motors are usually brushless DC (BLDC) motors that convert electrical
+            energy from the battery into mechanical rotation to spin the propellers
+            and generate thrust.
+        </p>
+
+        <h3>How the Motor Works</h3>
+        <p>
+            The flight controller sends speed commands to the ESC. The ESC then
+            supplies controlled power to the motor windings, creating a rotating
+            magnetic field. This rotates the motor shaft and spins the propeller.
+        </p>
+
+        <h3>Key Parameters</h3>
+        <ul>
+            <li><b>KV Rating:</b> RPM per volt applied</li>
+            <li><b>Stator size:</b> Indicates motor power capability</li>
+            <li><b>Max current:</b> Maximum safe current draw</li>
+            <li><b>Weight:</b> Affects drone payload capacity</li>
+        </ul>
+
+        <h3>Understanding KV Rating</h3>
+        <ul>
+            <li><b>High KV (2000–3000 KV):</b>
+                <ul>
+                    <li>Higher speed</li>
+                    <li>Smaller propellers</li>
+                    <li>Used in racing drones</li>
+                </ul>
+            </li>
+            <li><b>Medium KV (900–1500 KV):</b>
+                <ul>
+                    <li>Balanced performance</li>
+                    <li>General-purpose drones</li>
+                </ul>
+            </li>
+            <li><b>Low KV (400–900 KV):</b>
+                <ul>
+                    <li>Higher torque</li>
+                    <li>Larger propellers</li>
+                    <li>Mapping and heavy-lift drones</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Typical Use Cases</h3>
+        <ul>
+            <li>High KV motors for racing drones</li>
+            <li>Medium KV for camera drones</li>
+            <li>Low KV for mapping or delivery drones</li>
+        </ul>
+
+        <h3>Selection Tips</h3>
+        <ul>
+            <li>Match motor KV with propeller size</li>
+            <li>Ensure motor thrust is at least 2× drone weight</li>
+            <li>Check compatibility with ESC and battery voltage</li>
+        </ul>
+
+        <h3>Common Mistakes</h3>
+        <ul>
+            <li>Using high KV motors with large propellers</li>
+            <li>Ignoring thrust-to-weight ratio</li>
+            <li>Choosing motors that draw more current than ESC can handle</li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Components</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="menu-btn" style="background:#444;">← Back to Home</a>
+<h2>Learn Drone Components</h2>
+<p class="subtitle">Tap a component to learn more</p>
+
+<!-- Component List -->
+<div id="componentMenu" class="card-menu">
+    <a href="flightcontroller.html" class="card-btn">Flight Controllers</a>
+    <a href="power.html" class="card-btn">Power System</a>
+    <a href="esc.html" class="card-btn">ESC (Electronic Speed Controller)</a>
+    <a href="radio.html" class="card-btn">Radio System</a>
+    <a href="navigation.html" class="card-btn">Navigation & Sensors</a>
+    <a href="mechanical.html" class="card-btn">Mechanical System</a>
+</div>
+
+<!-- Component Detail -->
+<div id="componentContent" class="result" style="display:none;"></div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

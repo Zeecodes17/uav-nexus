@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS & Telemetry Wiring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="wiring.html" class="menu-btn">
+        ← Back to Wiring Guide
+    </a>
+
+    <h2>GPS & Telemetry Wiring</h2>
+    <p class="subtitle">
+        Wiring GPS modules and telemetry radios to the flight controller
+    </p>
+
+    <!-- ================= GPS SECTION ================= -->
+
+    <hr>
+    <h3>GPS ↔ Flight Controller Wiring</h3>
+
+    <h4>Before You Start</h4>
+    <ul>
+        <li>Remove all propellers</li>
+        <li>Identify GPS module pinout</li>
+        <li>Confirm GPS voltage (5V or 3.3V)</li>
+        <li>Select a free UART on the FC</li>
+    </ul>
+
+    <hr>
+
+    <h4>Standard GPS Wiring (UART)</h4>
+    <table>
+        <tr>
+            <th>GPS Module</th>
+            <th>Flight Controller</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>TX</td>
+            <td>UART RX</td>
+            <td>Cross TX → RX</td>
+        </tr>
+        <tr>
+            <td>RX</td>
+            <td>UART TX</td>
+            <td>Cross RX → TX</td>
+        </tr>
+        <tr>
+            <td>+5V / 3.3V</td>
+            <td>+5V / 3.3V</td>
+            <td>Match GPS voltage rating</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+            <td>Common ground required</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h4>Compass (I²C) Wiring</h4>
+    <table>
+        <tr>
+            <th>Compass</th>
+            <th>Flight Controller</th>
+        </tr>
+        <tr>
+            <td>SDA</td>
+            <td>SDA</td>
+        </tr>
+        <tr>
+            <td>SCL</td>
+            <td>SCL</td>
+        </tr>
+        <tr>
+            <td>+3.3V / +5V</td>
+            <td>+3.3V / +5V</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h4>GPS Wiring Mistakes</h4>
+    <ul>
+        <li>TX connected to TX instead of RX</li>
+        <li>Incorrect GPS voltage</li>
+        <li>Using same UART as telemetry or receiver</li>
+        <li>Incorrect compass orientation</li>
+    </ul>
+
+    <!-- ================= TELEMETRY SECTION ================= -->
+
+    <hr>
+    <h3>Telemetry ↔ Flight Controller Wiring</h3>
+
+    <h4>Before You Start</h4>
+    <ul>
+        <li>Identify telemetry radio voltage</li>
+        <li>Select a dedicated UART</li>
+        <li>Check antenna connection</li>
+    </ul>
+
+    <hr>
+
+    <h4>Standard Telemetry Wiring (UART)</h4>
+    <table>
+        <tr>
+            <th>Telemetry Radio</th>
+            <th>Flight Controller</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>TX</td>
+            <td>UART RX</td>
+            <td>Always cross TX → RX</td>
+        </tr>
+        <tr>
+            <td>RX</td>
+            <td>UART TX</td>
+            <td>Always cross RX → TX</td>
+        </tr>
+        <tr>
+            <td>+5V / 3.3V</td>
+            <td>+5V / 3.3V</td>
+            <td>Match telemetry voltage</td>
+        </tr>
+        <tr>
+            <td>GND</td>
+            <td>GND</td>
+            <td>Common ground required</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h4>Telemetry Wiring Mistakes</h4>
+    <ul>
+        <li>TX → TX instead of TX → RX</li>
+        <li>Powering telemetry from battery voltage</li>
+        <li>Sharing UART with GPS</li>
+        <li>Loose antenna connection</li>
+    </ul>
+
+    <hr>
+
+    <h3>Final Check (GPS + Telemetry)</h3>
+    <ul>
+        <li>GPS and telemetry use separate UARTs</li>
+        <li>All grounds connected</li>
+        <li>Voltage levels verified</li>
+        <li>FC powered via USB first</li>
+    </ul>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

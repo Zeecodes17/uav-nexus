@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESC to Flight Controller Wiring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="wiring.html" class="menu-btn">
+        ← Back to Wiring Guide
+    </a>
+
+    <h2>ESC ↔ Flight Controller Wiring</h2>
+    <p class="subtitle">
+        Connecting ESC signal, ground, and power lines to the flight controller
+    </p>
+
+    <hr>
+
+    <h3>Before You Start</h3>
+    <ul>
+        <li>Remove all propellers</li>
+        <li>Do NOT connect the battery yet</li>
+        <li>Verify ESC type (OPTO or BEC)</li>
+        <li>Identify FC motor output pins</li>
+    </ul>
+
+    <hr>
+
+    <h3>ESC Control Cable (3-Wire)</h3>
+    <p>
+        Most ESCs use a 3-wire servo cable to communicate with the flight controller.
+    </p>
+
+    <ul>
+        <li><b>White / Yellow</b> → Signal</li>
+        <li><b>Black / Brown</b> → Ground</li>
+        <li><b>Red</b> → +5V (BEC output, if present)</li>
+    </ul>
+
+    <hr>
+
+    <h3>Standard ESC → FC Connection</h3>
+
+    <table>
+        <tr>
+            <th>ESC Wire</th>
+            <th>Flight Controller Pin</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td>Signal (White / Yellow)</td>
+            <td>M1, M2, M3, M4…</td>
+            <td>Motor output number must match motor order</td>
+        </tr>
+        <tr>
+            <td>Ground (Black / Brown)</td>
+            <td>GND</td>
+            <td>Mandatory for signal reference</td>
+        </tr>
+        <tr>
+            <td>+5V (Red)</td>
+            <td>+5V (optional)</td>
+            <td>Connect only ONE BEC unless FC manual allows multiple</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>OPTO ESC vs BEC ESC</h3>
+
+    <h4>OPTO ESC</h4>
+    <ul>
+        <li>No red wire (no power output)</li>
+        <li>Requires external power module or BEC</li>
+        <li>Common in larger drones</li>
+    </ul>
+
+    <h4>BEC ESC</h4>
+    <ul>
+        <li>Has red +5V wire</li>
+        <li>Powers FC and receiver</li>
+        <li>Use only ONE red wire connected</li>
+    </ul>
+
+    <hr>
+
+    <h3>Motor Output Order (Critical)</h3>
+    <p>
+        ESCs must be connected to the correct motor output pins
+        based on the flight controller firmware (ArduPilot / Betaflight).
+    </p>
+
+    <ul>
+        <li>Motor 1 → M1</li>
+        <li>Motor 2 → M2</li>
+        <li>Motor 3 → M3</li>
+        <li>Motor 4 → M4</li>
+    </ul>
+
+    <p>
+        Motor direction and order are verified later in software.
+    </p>
+
+    <hr>
+
+    <h3>Common Mistakes</h3>
+    <ul>
+        <li>Connecting multiple ESC red wires to FC</li>
+        <li>Skipping ground connection</li>
+        <li>Incorrect motor numbering</li>
+        <li>Powering FC directly from battery voltage</li>
+    </ul>
+
+    <hr>
+
+    <h3>Pre-Power Checklist</h3>
+    <ul>
+        <li>ESC signal wires firmly seated</li>
+        <li>Only one +5V line connected (if BEC)</li>
+        <li>FC powered via USB first</li>
+        <li>No propellers installed</li>
+    </ul>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

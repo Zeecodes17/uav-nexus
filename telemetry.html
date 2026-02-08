@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemetry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="radio.html" class="menu-btn" style="background:#444;">← Back to Radio System</a>
+
+    <h2>Telemetry Module</h2>
+
+    <div class="result" style="display:block;">
+
+        <img src="images/telemetry.jpg"
+             alt="Telemetry Module"
+             style="width:100%; border-radius:10px; margin-bottom:15px;">
+
+        <h3>What is Telemetry?</h3>
+        <p>
+            A telemetry system sends real-time flight data from the drone to a ground station.
+            It allows the operator to monitor the drone’s condition during flight.
+        </p>
+
+        <h3>What Data is Transmitted?</h3>
+        <ul>
+            <li>Battery voltage and current</li>
+            <li>GPS position and altitude</li>
+            <li>Flight mode and speed</li>
+            <li>Attitude (roll, pitch, yaw)</li>
+            <li>Warnings and failsafe alerts</li>
+        </ul>
+
+        <h3>How Telemetry Works</h3>
+        <p>
+            The flight controller sends flight data to an onboard telemetry radio.
+            This radio wirelessly communicates with a matching telemetry radio
+            connected to a laptop or ground station.
+        </p>
+
+        <h3>Basic Telemetry Flow</h3>
+        <ul>
+            <li>Flight Controller → Telemetry Module (on drone)</li>
+            <li>Telemetry Module → Wireless Link</li>
+            <li>Ground Telemetry Module → Laptop</li>
+            <li>Ground Control Software displays data</li>
+        </ul>
+
+        <h3>Common Telemetry Frequencies</h3>
+        <ul>
+            <li>433 MHz – Long range, common in research drones</li>
+            <li>915 MHz – Used in many commercial systems</li>
+            <li>2.4 GHz – Shorter range, higher data rate</li>
+        </ul>
+
+        <h3>Ground Control Software</h3>
+        <ul>
+            <li>Mission Planner (for Ardupilot)</li>
+            <li>QGroundControl (for PX4)</li>
+            <li>APM Planner</li>
+        </ul>
+
+        <h3>Typical Use Cases</h3>
+        <ul>
+            <li>Autonomous mapping missions</li>
+            <li>Delivery drones</li>
+            <li>Research UAVs</li>
+            <li>Long-range surveillance</li>
+        </ul>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

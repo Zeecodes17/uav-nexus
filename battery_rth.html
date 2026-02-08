@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Flight Energy Check</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="battery.html" class="menu-btn" style="background:#444;">
+        ← Back to Battery & Flight Tools
+    </a>
+
+    <h2>Return Flight Energy Check</h2>
+    <p class="subtitle">
+        Design-time safety check to estimate whether sufficient energy remains
+        to return to home with a reserve. This is not firmware RTH configuration.
+    </p>
+
+    <hr>
+
+    <!-- ================= INPUTS ================= -->
+
+    <label>Distance to Home (km)</label>
+    <input type="range" id="distance" min="0.1" max="20" step="0.1" value="2.0">
+    <div class="small-text" id="distVal">2.0 km</div>
+
+    <label>Cruise Speed (km/h)</label>
+    <input type="range" id="speed" min="10" max="80" step="1" value="40">
+    <div class="small-text" id="speedVal">40 km/h</div>
+
+    <label>Average Power During Return (W)</label>
+    <input type="range" id="power" min="50" max="3000" step="25" value="400">
+    <div class="small-text" id="powerVal">400 W</div>
+
+    <label>Usable Battery Energy (Wh)</label>
+    <input type="range" id="energy" min="10" max="1500" step="10" value="120">
+    <div class="small-text" id="energyVal">120 Wh</div>
+
+    <label>Mandatory Reserve (%)</label>
+    <input type="range" id="reserve" min="10" max="40" step="5" value="25">
+    <div class="small-text" id="reserveVal">25 %</div>
+
+    <hr>
+
+    <!-- ================= RESULTS ================= -->
+
+    <h3>Return Assessment</h3>
+
+    <div class="result-box">
+
+        <p>
+            <b>Return Time:</b>
+            <span id="returnTime">–</span> minutes
+        </p>
+
+        <p>
+            <b>Energy Required to Return:</b>
+            <span id="energyReq">–</span> Wh
+        </p>
+
+        <p>
+            <b>Energy Remaining After Return:</b>
+            <span id="energyRem">–</span> Wh
+        </p>
+
+        <p class="small-text" id="rthContext">
+            –
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ================= TOOL LOGIC ================= -->
+<script>
+const distanceSlider = document.getElementById("distance");
+const speedSlider = document.getElementById("speed");
+const powerSlider = document.getElementById("power");
+const energySlider = document.getElementById("energy");
+const reserveSlider = document.getElementById("reserve");
+
+const distVal = document.getElementById("distVal");
+const speedVal = document.getElementById("speedVal");
+const powerVal = document.getElementById("powerVal");
+const energyVal = document.getElementById("energyVal");
+const reserveVal = document.getElementById("reserveVal");
+
+const returnTimeOut = document.getElementById("returnTime");
+const energyReqOut = document.getElementById("energyReq");
+const energyRemOut = document.getElementById("energyRem");
+const contextLine = document.getElementById("rthContext");
+
+function updateRTH() {
+
+    const distance = Number(distanceSlider.value);   // km (direct to home)
+    const speed = Number(speedSlider.value);         // km/h
+    const power = Number(powerSlider.value);         // W
+    const energyWh = Number(energySlider.value);     // Wh
+    const reservePct = Number(reserveSlider.value) / 100;
+
+    distVal.textContent = distance.toFixed(1) + " km";
+    speedVal.textContent = speed + " km/h";
+    powerVal.textContent = power + " W";
+    energyVal.textContent = energyWh + " Wh";
+    reserveVal.textContent = (reservePct * 100) + " %";
+
+    // Time to return (hours → minutes)
+    const returnTimeHr = distance / speed;
+    const returnTimeMin = returnTimeHr * 60;
+
+    // Energy required to return
+    const energyRequired = power * returnTimeHr;
+
+    // Reserve energy
+    const reserveEnergy = energyWh * reservePct;
+
+    // Remaining energy after return
+    const energyRemaining = energyWh - energyRequired;
+
+    returnTimeOut.textContent = returnTimeMin.toFixed(1);
+    energyReqOut.textContent = energyRequired.toFixed(1);
+    energyRemOut.textContent = energyRemaining.toFixed(1);
+
+    // Assessment logic
+    if (energyRemaining > reserveEnergy * 1.2) {
+        contextLine.textContent =
+            "Comfortable margin remains after return. Mission profile is conservative.";
+    } else if (energyRemaining > reserveEnergy) {
+        contextLine.textContent =
+            "Return is feasible but margin is tight. Any headwind or delay may compromise reserve.";
+    } else {
+        contextLine.textContent =
+            "Return not feasible with required reserve. Immediate course or mission change recommended.";
+    }
+}
+
+// Hook inputs
+distanceSlider.addEventListener("input", updateRTH);
+speedSlider.addEventListener("input", updateRTH);
+powerSlider.addEventListener("input", updateRTH);
+energySlider.addEventListener("input", updateRTH);
+reserveSlider.addEventListener("input", updateRTH);
+
+// Initial evaluation
+updateRTH();
+</script>
+
+<!-- ================= GLOBAL APP SCRIPT ================= -->
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Time Reality Check</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="battery.html" class="menu-btn" style="background:#444;">
+        ← Back to Battery & Flight Tools
+    </a>
+
+    <h2>Flight Time Reality Check</h2>
+    <p class="subtitle">
+        Design-time estimation of hover and practical flight time based on
+        battery energy, vehicle weight, and flight style.
+        Results are indicative, not guarantees.
+    </p>
+
+    <hr>
+
+    <!-- ================= INPUTS ================= -->
+
+    <label>Battery Capacity (mAh)</label>
+    <input type="range" id="capacity"
+           min="1000" max="25000" step="200" value="5000">
+    <div class="small-text" id="capVal">5000 mAh</div>
+
+    <label>Battery Cell Count (S)</label>
+    <input type="range" id="cells"
+           min="2" max="12" step="1" value="4">
+    <div class="small-text" id="cellVal">4 S</div>
+
+    <label>All-Up Weight (kg)</label>
+    <input type="range" id="weight"
+           min="0.5" max="25" step="0.1" value="2.0">
+    <div class="small-text" id="weightVal">2.0 kg</div>
+
+    <label>Flight Style</label>
+    <select id="style">
+        <option value="1.0">Hover / Gentle</option>
+        <option value="1.3">Cruise</option>
+        <option value="1.7">Aggressive</option>
+    </select>
+
+    <hr>
+
+    <!-- ================= RESULTS ================= -->
+
+    <h3>Estimated Flight Time</h3>
+
+    <div class="result-box">
+
+        <p>
+            <b>Hover Time:</b>
+            <span id="hoverTime">–</span> minutes
+        </p>
+
+        <p>
+            <b>Practical Mission Time:</b>
+            <span id="missionTime">–</span> minutes
+        </p>
+
+        <p class="small-text" id="contextLine">
+            –
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ================= TOOL LOGIC ================= -->
+<script>
+const capacitySlider = document.getElementById("capacity");
+const cellSlider = document.getElementById("cells");
+const weightSlider = document.getElementById("weight");
+const styleSelect = document.getElementById("style");
+
+const capVal = document.getElementById("capVal");
+const cellVal = document.getElementById("cellVal");
+const weightVal = document.getElementById("weightVal");
+
+const hoverOut = document.getElementById("hoverTime");
+const missionOut = document.getElementById("missionTime");
+const contextLine = document.getElementById("contextLine");
+
+/*
+    Conservative engineering model:
+    Average hover power ≈ 170 W per kg
+*/
+const POWER_PER_KG = 170;
+const USABLE_ENERGY_FACTOR = 0.8; // 80% usable battery energy
+
+function updateFlightTime() {
+
+    const capacity = Number(capacitySlider.value);
+    const cells = Number(cellSlider.value);
+    const weight = Number(weightSlider.value);
+    const style = Number(styleSelect.value);
+
+    capVal.textContent = capacity + " mAh";
+    cellVal.textContent = cells + " S";
+    weightVal.textContent = weight.toFixed(1) + " kg";
+
+    // Battery energy (Wh)
+    const batteryWh = (capacity * cells * 3.7) / 1000;
+    const usableWh = batteryWh * USABLE_ENERGY_FACTOR;
+
+    // Power estimates
+    const hoverPower = weight * POWER_PER_KG;
+    const avgPower = hoverPower * style;
+
+    // Time estimates (minutes)
+    const hoverTime = (usableWh / hoverPower) * 60;
+    const missionTime = (usableWh / avgPower) * 60;
+
+    hoverOut.textContent = hoverTime.toFixed(1);
+    missionOut.textContent = missionTime.toFixed(1);
+
+    // Context guidance
+    if (missionTime < hoverTime * 0.7) {
+        contextLine.textContent =
+            "Aggressive flight significantly reduces usable flight time.";
+    } else if (weight > 5) {
+        contextLine.textContent =
+            "Vehicle weight dominates power consumption and limits endurance.";
+    } else {
+        contextLine.textContent =
+            "Flight time is primarily governed by weight and flight style.";
+    }
+}
+
+// Hook inputs
+capacitySlider.addEventListener("input", updateFlightTime);
+cellSlider.addEventListener("input", updateFlightTime);
+weightSlider.addEventListener("input", updateFlightTime);
+styleSelect.addEventListener("change", updateFlightTime);
+
+// Initial calculation
+updateFlightTime();
+</script>
+
+<!-- ================= GLOBAL SCRIPT ================= -->
+<script src="script.js"></script>
+
+</body>
+</html>
