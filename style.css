@@ -596,31 +596,32 @@ body.dark .helper summary {
 }
 
 /* ============================= */
-/* MOBILE SIDEBAR FIX (PWA)     */
+/* MOBILE SIDEBAR – FINAL FIX   */
 /* ============================= */
 
 @media (max-width: 768px) {
 
-  /* Sidebar hidden by default */
-  #sidebar {
+  /* Sidebar hidden by default on mobile */
+  #sidebar.sidebar {
     position: fixed;
-    left: -260px;          /* hide off-screen */
     top: 0;
-    height: 100vh;
+    left: -280px;          /* hide completely */
     width: 260px;
-    z-index: 1000;
+    height: 100vh;
+    z-index: 10000;
     transition: left 0.3s ease;
   }
 
-  /* Sidebar visible when toggled */
-  #sidebar.open {
+  /* Sidebar visible ONLY when toggled */
+  #sidebar.sidebar.open {
     left: 0;
   }
 
-  /* Main content should take full width */
+  /* Ensure main content uses full width */
+  body,
   .container {
     margin-left: 0 !important;
+    padding-left: 0 !important;
     width: 100%;
   }
-
 }
