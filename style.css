@@ -625,3 +625,12 @@ body.dark .helper summary {
     width: 100%;
   }
 }
+/* ============================= */
+/* MOBILE BODY LAYOUT FIX       */
+/* ============================= */
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;   /* 🔥 THIS IS THE FIX */
+  }
+}
